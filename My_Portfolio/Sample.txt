@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katreddi Sai Srinivas - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #00ffcc;
+    }
+
+    /* Navigation */
+    .header {
+      width: 100%;
+      background: rgba(17, 17, 17, 0.9);
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    .header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .header nav ul li {
+      margin: 0 15px;
+    }
+
+    .header nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .header nav ul li a:hover {
+      color: #00ffcc;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header nav ul li a.active {
+      color: #00ffcc;
+    }
+
+    /* Mobile Navigation */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    /* Home Section */
+    #home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      width: 90%;
+      gap: 50px;
+    }
+
+    .left-side {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .right-side {
+      flex: 1;
+    }
+
+    .glow-circle {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #00ffcc, #009988);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+      animation: pulse 3s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 30px rgba(0, 255, 204, 0.5); }
+      100% { box-shadow: 0 0 50px rgba(0, 255, 204, 0.8); }
+    }
+
+    .glow-circle img {
+      width: 95%;
+      height: 95%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+    }
+
+    .right-side h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+
+    .right-side p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #00ffcc;
+      color: #111;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: 2px solid #00ffcc;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: #00ffcc;
+    }
+
+    /* About Section */
+    .about-container {
+      display: flex;
+      max-width: 1200px;
+      width: 90%;
+      min-height: 500px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .about-left, .about-right {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .about-left {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .certificate {
+      width: 100%;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .certificate.active {
+      display: block;
+    }
+
+    .certificate img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    }
+
+    .about-right {
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .certificate-description {
+      display: none;
+      margin-bottom: 30px;
+    }
+
+    .certificate-description.active {
+      display: block;
+    }
+
+    .certificate-description h3 {
+      font-size: 1.5rem;
+      color: #2c5364;
+      margin-bottom: 15px;
+    }
+
+    .certificate-description p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Scroll Navigation */
+    .scroll-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .scroll-symbol {
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+      transition: all 0.3s;
+    }
+
+    .scroll-symbol:hover {
+      color: #00ffcc;
+    }
+
+    .scroll-dots {
+      display: flex;
+      gap: 10px;
+      margin: 0 20px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ccc;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #00ffcc;
+      transform: scale(1.2);
+    }
+
+    /* Skills Section */
+    .skills-section {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .skills-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .skills-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .skills-card {
+      flex: 0 0 auto;
+      width: 300px;
+      background: #111;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .skills-card:hover {
+      transform: scale(1.05);
+    }
+
+    .skills-card-title {
+      color: #00ffcc;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .skills-card-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .skill {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #00ffcc;
+      background: #111;
+      border: 1px solid #00ffcc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .skill:hover {
+      color: #111;
+      background: #fff;
+    }
+
+    .skill i {
+      font-size: 2.5rem;
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .scroll-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 255, 204, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      color: #111;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .scroll-arrow:hover {
+      background: #00ffcc;
+    }
+
+    .scroll-left {
+      left: 10px;
+    }
+
+    .scroll-right {
+      right: 10px;
+    }
+
+    /* Projects Section */
+    .project-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      width: 90%;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      display: none;
+    }
+
+    .project-card.active {
+      display: block;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-card-content {
+      padding: 20px;
+      color: #333;
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #2c5364;
+    }
+
+    .project-card p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Experience Section */
+    .experience-container {
+      max-width: 1200px;
+      width: 90%;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .experience-item {
+      display: none;
+      padding: 30px;
+      color: #333;
+    }
+
+    .experience-item.active {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .experience-item h3 {
+      font-size: 1.5rem;
+      color: #2c5364;
+      margin-bottom: 15px;
+    }
+
+    .experience-item p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .experience-img {
+      width: 40%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    /* Achievements Section */
+    #achievements .experience-item.active {
+      flex-direction: row;
+    }
+
+    /* Certificates Section */
+    #certificates .project-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    #certificates .project-card {
+      display: block !important;
+    }
+
+    #certificates .scroll-navigation {
+      display: none;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: #00ffcc;
+      color: #111;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #00cc99;
+    }
+
+    .response-message {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    /* Go to Top Button */
+    .go-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 255, 204, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      color: #111;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .go-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .go-to-top:hover {
+      background: #00ffcc;
+      transform: translateY(-5px);
+    }
+
+    /* Footer */
+    .footer {
+      width: 100%;
+      background: #111;
+      color: #ccc;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      margin: 1rem 0;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-links .icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      filter: invert(80%);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      #certificates .project-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .btn-group {
+        justify-content: center;
+      }
+
+      .about-container {
+        flex-direction: column;
+      }
+
+      .skills-card {
+        width: 280px;
+      }
+
+      #achievements .experience-item.active {
+        flex-direction: column;
+      }
+
+      .experience-img {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: rgba(17, 17, 17, 0.95);
+        padding: 20px 0;
+      }
+
+      .header nav ul.show {
+        display: flex;
+      }
+
+      .header nav ul li {
+        margin: 10px 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .glow-circle {
+        width: 250px;
+        height: 250px;
+      }
+
+      .right-side h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .scroll-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+      }
+
+      .project-container {
+        grid-template-columns: 1fr;
+      }
+
+      #certificates .project-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .btn-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .scroll-navigation {
+        margin-top: 20px;
+      }
+
+      .skills-card-content {
+        grid-template-columns: 1fr;
+      }
+
+      .go-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation and Home sections remain same as previous -->
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title">My Projects</h2>
+    <div class="project-container">
+      <div class="project-card active">
+        <img src="pphr-new.jpg" alt="Blockchain Project" />
+        <div class="project-card-content">
+          <h3>Protecting Personal Health Records Using Blockchain</h3>
+          <p>A secure system that utilizes blockchain to ensure the privacy and immutability of personal healthcare data.</p>
+        </div>
+      </div>
+      <div class="project-card active">
+        <img src="csp-new.png" alt="Healthcare Management" />
+        <div class="project-card-content">
+          <h3>Healthcare Management in Rural Areas</h3>
+          <p>An app to manage appointments, health records, and doctor availability in remote villages and towns.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="shopping.jpg" alt="Shopping Website" />
+        <div class="project-card-content">
+          <h3>Shopping Website</h3>
+          <p>An e-commerce platform featuring responsive design, product listings, a cart system, and order history.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="tic-tac-toe.png" alt="Tic Tac Toe" />
+        <div class="project-card-content">
+          <h3>Tic Tac Toe Game</h3>
+          <p>A simple yet interactive two-player game developed using HTML, CSS, and JavaScript.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-navigation">
+      <span class="scroll-symbol" id="projects-prev"><i class="fas fa-chevron-left"></i></span>
+      <span class="scroll-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+      </span>
+      <span class="scroll-symbol" id="projects-next"><i class="fas fa-chevron-right"></i></span>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements">
+    <h2 class="section-title">Achievements</h2>
+    <div class="experience-container">
+      <div class="experience-item active">
+        <img src="gate.png" alt="GATE Qualified" class="experience-img" />
+        <div>
+          <h3>GATE Qualified</h3>
+          <p>Successfully qualified the Graduate Aptitude Test in Engineering (GATE), demonstrating strong technical proficiency and problem-solving skills in core subjects related to computer science.</p>
+        </div>
+      </div>
+      <div class="experience-item">
+        <img src="paperpublish.jpg" alt="IJIRST Publication" class="experience-img" />
+        <div>
+          <h3>Research Paper Published in IJIRST</h3>
+          <p>Published a research paper titled <strong>"Laptop Price Prediction using Machine Learning"</strong> in the <em>International Journal for Innovative Research in Science & Technology (IJIRST)</em>. The paper discusses implementing regression algorithms to predict laptop prices based on specifications.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-navigation">
+      <span class="scroll-symbol" id="achievements-prev"><i class="fas fa-chevron-left"></i></span>
+      <span class="scroll-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+      </span>
+      <span class="scroll-symbol" id="achievements-next"><i class="fas fa-chevron-right"></i></span>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates">
+    <h2 class="section-title">Certificates</h2>
+    <div class="project-container">
+      <div class="project-card">
+        <img src="NPTEL_JAVA.jpg" alt="Java Certificate" />
+        <div class="project-card-content">
+          <h3>Programming in Java - NPTEL</h3>
+          <p>Certified by NPTEL with an 'Elite' score. Demonstrated solid understanding of Java programming fundamentals.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="dsa.png" alt="Data Structures Certificate" />
+        <div class="project-card-content">
+          <h3>Data Structures Using Java - NPTEL</h3>
+          <p>Completed NPTEL course on Data Structures, learning core topics including arrays, trees, and sorting algorithms.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="certificate-hackathon.jpg" alt="Hackathon Certificate" />
+        <div class="project-card-content">
+          <h3>Hackathon Participation - Brainovision</h3>
+          <p>Participated in a 24-hour data science hackathon organized by Brainovision, enhancing team collaboration and problem-solving.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="certificate-fullstack.jpg" alt="Full Stack Java Certificate" />
+        <div class="project-card-content">
+          <h3>Full Stack Java Development - AICTE APSHE</h3>
+          <p>Completed internship covering full-stack development: Java, Spring Boot, database management, and frontend frameworks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rest of the sections remain same as previous -->
+
+  <script>
+    // Updated JavaScript
+
+    // Projects Pagination
+    let currentProjectPage = 0;
+    const projectCards = document.querySelectorAll('#projects .project-card');
+    const projectDots = document.querySelectorAll('#projects .dot');
+    const itemsPerPage = 2;
+
+    function showProjects(page) {
+      const start = page * itemsPerPage;
+      const end = start + itemsPerPage;
+      
+      projectCards.forEach((card, index) => {
+        card.style.display = (index >= start && index < end) ? 'block' : 'none';
+      });
+      
+      projectDots.forEach(dot => dot.classList.remove('active'));
+      projectDots[page].classList.add('active');
+    }
+
+    document.getElementById('projects-prev').addEventListener('click', () => {
+      if (currentProjectPage > 0) {
+        currentProjectPage--;
+        showProjects(currentProjectPage);
+      }
+    });
+
+    document.getElementById('projects-next').addEventListener('click', () => {
+      if (currentProjectPage < Math.ceil(projectCards.length/itemsPerPage) - 1) {
+        currentProjectPage++;
+        showProjects(currentProjectPage);
+      }
+    });
+
+    // Initialize projects
+    showProjects(0);
+
+    // Achievements Carousel
+    let currentAchievement = 0;
+    const achievementItems = document.querySelectorAll('#achievements .experience-item');
+    const achievementDots = document.querySelectorAll('#achievements .dot');
+
+    function showAchievement(index) {
+      achievementItems.forEach(item => item.classList.remove('active'));
+      achievementItems[index].classList.add('active');
+      
+      achievementDots.forEach(dot => dot.classList.remove('active'));
+      achievementDots[index].classList.add('active');
+    }
+
+    document.getElementById('achievements-prev').addEventListener('click', () => {
+      currentAchievement = (currentAchievement - 1 + achievementItems.length) % achievementItems.length;
+      showAchievement(currentAchievement);
+    });
+
+    document.getElementById('achievements-next').addEventListener('click', () => {
+      currentAchievement = (currentAchievement + 1) % achievementItems.length;
+      showAchievement(currentAchievement);
+    });
+
+    // Initialize achievements
+    showAchievement(0);
+
+    // Rest of the JavaScript remains same as previous
+  </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="#my-projects" style="color: #00ffcc;">Projects</a></li>
+        <li><a href="experience.html">Work Experience</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Projects Section -->
+  <div class="project-container">
+    <div class="project-card">
+      <img src="blockchain-project.jpg" alt="Blockchain Project" />
+      <h3>Protecting Personal Health Records Using Blockchain</h3>
+      <p>A secure system that utilizes blockchain to ensure the privacy and immutability of personal healthcare data.</p>
+    </div>
+    <div class="project-card">
+      <img src="rural-healthcare.jpg" alt="Healthcare Management" />
+      <h3>Healthcare Management in Rural Areas</h3>
+      <p>An app to manage appointments, health records, and doctor availability in remote villages and towns.</p>
+    </div>
+    <div class="project-card">
+      <img src="shopping-site.jpg" alt="Shopping Website" />
+      <h3>Shopping Website</h3>
+      <p>An e-commerce platform featuring responsive design, product listings, a cart system, and order history.</p>
+    </div>
+    <div class="project-card">
+      <img src="tic-tac-toe.jpg" alt="Tic Tac Toe" />
+      <h3>Tic Tac Toe Game</h3>
+      <p>A simple yet interactive two-player game developed using HTML, CSS, and JavaScript.</p>
+    </div>
+  </div>
+
+  <!-- Scroll Navigation -->
+  <div class="scroll-navigation">
+    <span class="scroll-symbol" id="prev"><i class="fas fa-chevron-left"></i></span>
+    <span class="scroll-dots">
+      <span class="dot" id="dot1"></span>
+      <span class="dot" id="dot2"></span>
+      <span class="dot" id="dot3"></span>
+      <span class="dot" id="dot4"></span>
+    </span>
+    <span class="scroll-symbol" id="next"><i class="fas fa-chevron-right"></i></span>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.project-card');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+
+    function updateProjectView() {
+      cards.forEach((card, index) => {
+        card.style.display = index === currentIndex ? 'flex' : 'none';
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    // Init
+    updateProjectView();
+
+    document.getElementById('next').addEventListener('click', () => {
+      if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        updateProjectView();
+      }
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateProjectView();
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateProjectView();
+      });
+    });
+  </script>
+
+  <style>
+    body {
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 80px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .header {
+      width: 100%;
+      background: #111;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header nav ul li {
+      margin: 0 15px;
+    }
+
+    .header nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .header nav ul li a:hover {
+      color: #00ffcc;
+    }
+
+    .project-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      width: 90%;
+      max-width: 1000px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .project-card img {
+      width: 70%;
+      max-height: 250px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+      background-color: #000;
+      padding: 10px;
+    }
+
+    .project-card h3 {
+      color: #2c5364;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .scroll-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .scroll-symbol {
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .scroll-symbol:hover {
+      color: #00ffcc;
+    }
+
+    .scroll-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ccc;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #00ffcc;
+    }
+  </style>
+  
+</body>
+</html>

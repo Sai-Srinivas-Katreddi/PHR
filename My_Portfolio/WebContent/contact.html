@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Me - Portfolio</title>
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("UPCqMGcZliX18FFWb"); // User ID
+    })();
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="experience.html">Work Experience</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="#contact" style="color: #00ffcc;">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Form Section -->
+  <div class="contact-container">
+    <h2 class="title">Contact Me</h2>
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="from_name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="reply_to" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+    <div id="response-message" class="response-message"></div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      emailjs.sendForm('service_vzsuojl', 'service_vzsuojl', this)
+        .then(function() {
+          document.getElementById('response-message').innerHTML = "Your message has been sent successfully!";
+          document.getElementById('contact-form').reset();
+        }, function(error) {
+          document.getElementById('response-message').innerHTML = "Error sending message. Please try again.";
+          console.error(error);
+        });
+    });
+  </script>
+
+  <!-- CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .header {
+      width: 100%;
+      background: #111;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header nav ul li {
+      margin: 0 15px;
+    }
+
+    .header nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .header nav ul li a:hover {
+      color: #00ffcc;
+    }
+
+    .contact-container {
+      width: 80%;
+      max-width: 800px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      margin-top: 100px;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2c5364;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #00ffcc;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .form-group textarea {
+      height: 150px;
+    }
+
+    .submit-btn {
+      background-color: #00cc99;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: #00ffcc;
+      color:#111;
+    }
+
+    .response-message {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+  
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="#about-me" style="color: #00ffcc;">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="experience.html">Work Experience</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Me Section -->
+  <div class="about-container">
+    <div class="about-left">
+      <div class="certificate">
+        <img src="btech-certificate.jpg" alt="B.Tech Certificate" class="btech" />
+      </div>
+      <div class="certificate">
+        <img src="hsc-certificate.jpg" alt="HSC Certificate" class="hsc" />
+      </div>
+      <div class="certificate">
+        <img src="ssc-certificate.jpg" alt="SSC Certificate" class="ssc" />
+      </div>
+    </div>
+    <div class="about-right">
+      <h2 class="title">Educational Details</h2>
+      <div class="certificate-description" id="btech">
+        <h3>B.Tech</h3>
+        <p>
+          I completed my Bachelor's in Technology with a major in Computer Science from XYZ University. This was a 4-year program where I gained extensive knowledge in programming languages, algorithms, and data structures.
+        </p>
+      </div>
+      <div class="certificate-description" id="hsc">
+        <h3>HSC</h3>
+        <p>
+          I completed my Higher Secondary Certificate from ABC College with a focus on Science. The coursework included Mathematics, Physics, and Computer Science, which helped shape my technical foundation.
+        </p>
+      </div>
+      <div class="certificate-description" id="ssc">
+        <h3>SSC</h3>
+        <p>
+          My Secondary School Certificate was completed at DEF School. This provided me with the essential academic knowledge and the basic skills required for further studies.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Navigation -->
+  <div class="scroll-navigation">
+    <span class="scroll-symbol" id="prev"><i class="fas fa-chevron-left"></i></span>
+    <span class="scroll-dots">
+      <span class="dot" id="dot1"></span>
+      <span class="dot" id="dot2"></span>
+      <span class="dot" id="dot3"></span>
+    </span>
+    <span class="scroll-symbol" id="next"><i class="fas fa-chevron-right"></i></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0f2027;
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 80px; /* Adjusted for fixed header */
+}
+
+.header {
+  width: 100%;
+  background: #111;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.header nav ul li {
+  margin: 0 15px;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.header nav ul li a:hover {
+  color: #00ffcc;
+}
+
+.about-container {
+  display: flex;
+  max-width: 1200px;
+  width: 90%;
+  height: 80vh;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.about-left, .about-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-left {
+  background: #111;
+}
+
+.certificate {
+  margin: 20px;
+  width: 80%;
+  height: auto;
+  display: none; /* Initially hide all certificates */
+}
+
+.certificate img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+.about-right {
+  background: #fff;
+  padding: 40px;
+  flex-direction: column;
+  text-align: left;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c5364;
+  margin-bottom: 50px;
+  text-align: center;
+  border-bottom: 3px solid #00ffcc;
+}
+
+.certificate-description {
+  margin-bottom: 40px;
+}
+
+.certificate-description h3 {
+  font-size: 1.5rem;
+  color: #2c5364;
+}
+
+.certificate-description p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.scroll-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.scroll-symbol {
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.scroll-symbol:hover {
+  color: #00ffcc;
+}
+
+.scroll-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #00ffcc;
+}
+
+  </style>
+
+  <script>
+
+    const dots = document.querySelectorAll('.dot');
+const descriptions = document.querySelectorAll('.certificate-description');
+const certificates = document.querySelectorAll('.certificate');
+let currentIndex = 0;
+
+// Show the relevant certificate and description based on the current index
+function updateScroll() {
+  // Hide all certificates
+  certificates.forEach(cert => cert.style.display = 'none');
+  
+  // Show the current certificate
+  const activeCert = certificates[currentIndex];
+  activeCert.style.display = 'block';
+
+  // Remove active class from all dots
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  // Add active class to the current dot
+  dots[currentIndex].classList.add('active');
+  
+  // Show the relevant certificate description
+  descriptions.forEach((desc, index) => {
+    desc.style.display = index === currentIndex ? 'block' : 'none';
+  });
+}
+
+// Initialize the first dot and description
+updateScroll();
+
+// Event listeners for navigation
+document.getElementById('next').addEventListener('click', () => {
+  if (currentIndex < descriptions.length - 1) {
+    currentIndex++;
+    updateScroll();
+  }
+});
+
+document.getElementById('prev').addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateScroll();
+  }
+});
+
+// Event listeners for dot navigation
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentIndex = index;
+    updateScroll();
+  });
+});
+
+  </script>
+  
+</html>

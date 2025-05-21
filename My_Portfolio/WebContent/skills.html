@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="#skills" style="color: #00ffcc;">Skills</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="experience.html">Work Experience</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Skills Section -->
+  <div class="skills-container">
+    <div class="skills-card">
+      <h3 class="skills-card-title">Technical Skills</h3>
+      <div class="skills-card-content">
+        <div class="skill"><i class="fab fa-html5"></i><p>HTML</p></div>
+        <div class="skill"><i class="fab fa-css3-alt"></i><p>CSS</p></div>
+        <div class="skill"><i class="fab fa-js"></i><p>JavaScript</p></div>
+        <div class="skill"><i class="fab fa-java"></i><p>Java</p></div>
+        <div class="skill"><i class="fas fa-database"></i><p>MySQL</p></div>
+        <div class="skill"><i class="fab fa-python"></i><p>Python</p></div>
+      </div>
+    </div>
+
+    <div class="skills-card">
+      <h3 class="skills-card-title">Soft Skills</h3>
+      <div class="skills-card-content">
+        <div class="skill"><i class="fas fa-users"></i><p>Communication</p></div>
+        <div class="skill"><i class="fas fa-lightbulb"></i><p>Problem Solving</p></div>
+        <div class="skill"><i class="fas fa-project-diagram"></i><p>Leadership</p></div>
+        <div class="skill"><i class="fas fa-calendar-check"></i><p>Time Management</p></div>
+      </div>
+    </div>
+
+    <div class="skills-card">
+      <h3 class="skills-card-title">Tools & IDEs</h3>
+      <div class="skills-card-content">
+        <div class="skill"><i class="fab fa-github"></i><p>GitHub</p></div>
+        <div class="skill"><i class="fas fa-vscode"></i><p>VS Code</p></div>
+        <div class="skill"><i class="fas fa-terminal"></i><p>Command Line</p></div>
+        <div class="skill"><i class="fas fa-eclipse"></i><p>Eclipse</p></div>
+      </div>
+    </div>
+
+    <div class="skills-card">
+      <h3 class="skills-card-title">Frameworks</h3>
+      <div class="skills-card-content">
+        <div class="skill"><i class="fab fa-react"></i><p>React.js</p></div>
+        <div class="skill"><i class="fab fa-node"></i><p>Node.js</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Navigation -->
+  <div class="scroll-navigation">
+    <span class="scroll-symbol" id="prev"><i class="fas fa-chevron-left"></i></span>
+    <span class="scroll-dots">
+      <span class="dot" id="dot1"></span>
+      <span class="dot" id="dot2"></span>
+      <span class="dot" id="dot3"></span>
+      <span class="dot" id="dot4"></span>
+    </span>
+    <span class="scroll-symbol" id="next"><i class="fas fa-chevron-right"></i></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    background: #0f2027;
+    background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding-top: 80px; /* Adjusted for fixed header */
+  }
+
+  .header {
+    width: 100%;
+    background: #111;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header nav ul li {
+    margin: 0 15px;
+  }
+
+  .header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .header nav ul li a:hover {
+    color: #00ffcc;
+  }
+
+  .skills-container {
+    display: flex;
+    max-width: 1200px;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .skills-card {
+    background: #111;
+    border-radius: 10px;
+    width: 45%;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .skills-card:hover {
+    transform: scale(1.05);
+    
+  }
+
+  .skills-card-title {
+    color: #00ffcc;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .skills-card-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .skill {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #00ffcc;
+    background: #111;
+    border:1px solid #00ffcc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:2px;
+    border-radius: 5px;
+    margin-left:40px;
+    margin-right: 20px;
+  }
+ .skill:hover{
+	color: #111;
+	background: #fff;
+	
+}
+
+  .skill i {
+    font-size: 3rem;
+    color: #00ffcc;
+    margin-bottom: 10px;
+  }
+
+  .scroll-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .scroll-symbol {
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .scroll-symbol:hover {
+    color: #00ffcc;
+  }
+
+  .scroll-dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background-color: #00ffcc;
+  }
+
+</style>
+
+<script>
+  const dots = document.querySelectorAll('.dot');
+  const skillsCards = document.querySelectorAll('.skills-card');
+  let currentIndex = 0;
+
+  // Show the relevant card based on the current index
+  function updateScroll() {
+    // Hide all skill cards
+    skillsCards.forEach(card => card.style.display = 'none');
+    
+    // Show the current skill card
+    const activeCard = skillsCards[currentIndex];
+    activeCard.style.display = 'block';
+
+    // Remove active class from all dots
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Add active class to the current dot
+    dots[currentIndex].classList.add('active');
+  }
+
+  // Initialize the first card and dot
+  updateScroll();
+
+  // Event listeners for navigation
+  document.getElementById('next').addEventListener('click', () => {
+    if (currentIndex < skillsCards.length - 1) {
+      currentIndex++;
+      updateScroll();
+    }
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateScroll();
+    }
+  });
+
+  // Event listeners for dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateScroll();
+    });
+  });
+
+</script>
+
+</html>

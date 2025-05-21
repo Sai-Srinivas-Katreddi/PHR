@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificates - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="experience.html">Work Experience</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="#certificates" style="color: #00ffcc;">Certificates</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Certificates Section -->
+  <div class="project-container">
+    <div class="project-card">
+      <img src="certificate-java.jpg" alt="Java Certificate" />
+      <h3>Programming in Java - NPTEL</h3>
+      <p>Certified by NPTEL with an 'Elite' score. Demonstrated solid understanding of Java programming fundamentals.</p>
+    </div>
+    <div class="project-card">
+      <img src="certificate-ds.jpg" alt="Data Structures Certificate" />
+      <h3>Data Structures Using Java - NPTEL</h3>
+      <p>Completed NPTEL course on Data Structures, learning core topics including arrays, trees, and sorting algorithms.</p>
+    </div>
+    <div class="project-card">
+      <img src="certificate-hackathon.jpg" alt="Hackathon Certificate" />
+      <h3>Hackathon Participation - Brainovision</h3>
+      <p>Participated in a 24-hour data science hackathon organized by Brainovision, enhancing team collaboration and problem-solving.</p>
+    </div>
+    <div class="project-card">
+      <img src="certificate-fullstack.jpg" alt="Full Stack Java Certificate" />
+      <h3>Full Stack Java Development - AICTE APSHE</h3>
+      <p>Completed internship covering full-stack development: Java, Spring Boot, database management, and frontend frameworks.</p>
+    </div>
+  </div>
+
+  <!-- Scroll Navigation -->
+  <div class="scroll-navigation">
+    <span class="scroll-symbol" id="prev"><i class="fas fa-chevron-left"></i></span>
+    <span class="scroll-dots">
+      <span class="dot" id="dot1"></span>
+      <span class="dot" id="dot2"></span>
+      <span class="dot" id="dot3"></span>
+      <span class="dot" id="dot4"></span>
+    </span>
+    <span class="scroll-symbol" id="next"><i class="fas fa-chevron-right"></i></span>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.project-card');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+
+    function updateView() {
+      cards.forEach((card, index) => {
+        card.style.display = index === currentIndex ? 'flex' : 'none';
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    updateView();
+
+    document.getElementById('next').addEventListener('click', () => {
+      if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        updateView();
+      }
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateView();
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateView();
+      });
+    });
+  </script>
+
+  <style>
+    body {
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 80px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .header {
+      width: 100%;
+      background: #111;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header nav ul li {
+      margin: 0 15px;
+    }
+
+    .header nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .header nav ul li a:hover {
+      color: #00ffcc;
+    }
+
+    .project-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      width: 90%;
+      max-width: 1000px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .project-card img {
+      width: 70%;
+      max-height: 250px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+      background-color: #000;
+      padding: 10px;
+    }
+
+    .project-card h3 {
+      color: #2c5364;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .scroll-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .scroll-symbol {
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .scroll-symbol:hover {
+      color: #00ffcc;
+    }
+
+    .scroll-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ccc;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #00ffcc;
+    }
+  </style>
+  
+</body>
+</html>

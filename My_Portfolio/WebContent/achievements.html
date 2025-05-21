@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="experience.html">Work Experience</a></li>
+        <li><a href="#achievements" style="color: #00ffcc;">Achievements</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Achievements Section -->
+  <div class="about-container">
+    <div class="about-left">
+      <div class="certificate">
+        <img src="gate.jpg" alt="GATE Qualified" class="experience-img" />
+      </div>
+      <div class="certificate">
+        <img src="paper.jpg" alt="IJIRST Publication" class="experience-img" />
+      </div>
+    </div>
+    <div class="about-right">
+      <h2 class="title">Achievements</h2>
+      <div class="certificate-description">
+        <h3>GATE Qualified</h3>
+        <p>
+          Successfully qualified the Graduate Aptitude Test in Engineering (GATE), demonstrating strong technical proficiency and problem-solving skills in core subjects related to computer science.
+        </p>
+      </div>
+      <div class="certificate-description">
+        <h3>Research Paper Published in IJIRST</h3>
+        <p>
+          Published a research paper titled <strong>“Laptop Price Prediction using Machine Learning”</strong> in the <em>International Journal for Innovative Research in Science & Technology (IJIRST)</em>. The paper discusses implementing regression algorithms to predict laptop prices based on specifications.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Navigation -->
+  <div class="scroll-navigation">
+    <span class="scroll-symbol" id="prev"><i class="fas fa-chevron-left"></i></span>
+    <span class="scroll-dots">
+      <span class="dot" id="dot1"></span>
+      <span class="dot" id="dot2"></span>
+    </span>
+    <span class="scroll-symbol" id="next"><i class="fas fa-chevron-right"></i></span>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const dots = document.querySelectorAll('.dot');
+    const certificates = document.querySelectorAll('.certificate');
+    const descriptions = document.querySelectorAll('.certificate-description');
+    let currentIndex = 0;
+
+    function updateScroll() {
+      certificates.forEach(cert => cert.style.display = 'none');
+      descriptions.forEach(desc => desc.style.display = 'none');
+      certificates[currentIndex].style.display = 'block';
+      descriptions[currentIndex].style.display = 'block';
+
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentIndex].classList.add('active');
+    }
+
+    updateScroll();
+
+    document.getElementById('next').addEventListener('click', () => {
+      if (currentIndex < certificates.length - 1) {
+        currentIndex++;
+        updateScroll();
+      }
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateScroll();
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateScroll();
+      });
+    });
+  </script>
+
+  <!-- CSS (reuse same as experience.html) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      padding-top: 80px;
+    }
+
+    .header {
+      width: 100%;
+      background: #111;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header nav ul li {
+      margin: 0 15px;
+    }
+
+    .header nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .header nav ul li a:hover {
+      color: #00ffcc;
+    }
+
+    .about-container {
+      display: flex;
+      max-width: 1200px;
+      width: 90%;
+      height: 80vh;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .about-left, .about-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .about-left {
+      background: #111;
+    }
+
+    .certificate {
+      margin: 20px;
+      width: 80%;
+      height: auto;
+      display: none;
+    }
+
+    .certificate img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    }
+
+    .about-right {
+      background: #fff;
+      padding: 40px;
+      flex-direction: column;
+      text-align: left;
+      overflow-y: auto;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2c5364;
+      margin-bottom: 50px;
+      text-align: center;
+      border-bottom: 3px solid #00ffcc;
+    }
+
+    .certificate-description {
+      margin-bottom: 40px;
+      display: none;
+    }
+
+    .certificate-description h3 {
+      font-size: 1.5rem;
+      color: #2c5364;
+    }
+
+    .certificate-description p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .scroll-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .scroll-symbol {
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .scroll-symbol:hover {
+      color: #00ffcc;
+    }
+
+    .scroll-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ccc;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #00ffcc;
+    }
+  </style>
+  
+</body>
+</html>
